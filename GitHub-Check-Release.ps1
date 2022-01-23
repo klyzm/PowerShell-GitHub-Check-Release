@@ -52,9 +52,10 @@ function Get-GitHubContent {
     )
     
     try{
-        $Response = Invoke-WebRequest -Method "GET" -URI $RepoToMonitor -UseBasicParsing
+        $Response = Invoke-WebRequest -Method "GET" -URI $URI -UseBasicParsing
     }
     catch{
+        Write-Output $_.Exception
         Write-Error "Invoke-WebRequest failed"
         break
     }
