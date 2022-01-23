@@ -55,11 +55,13 @@ function Get-GitHubContent {
         $Response = Invoke-WebRequest -Method "GET" -URI $RepoToMonitor -UseBasicParsing
     }
     catch{
-        Write-Error "Invoke-WebRequest failed" -ErrorAction break
+        Write-Error "Invoke-WebRequest failed"
+        break
     }
 
     if($Response.StatusCode -ne 200){
-        Write-Error "Status Code wasn't 200" -ErrorAction break
+        Write-Error "Status Code wasn't 200"
+        break
     }
 
     return $Response.Content
@@ -73,7 +75,8 @@ function Get-LocalContent {
         $LocalContent = Get-Content -Raw -Path $LocalFilePath
     }
     catch{
-        Write-Error "Couldn't load local files" -ErrorAction break
+        Write-Error "Couldn't load local files"
+        break
     }
     
 
